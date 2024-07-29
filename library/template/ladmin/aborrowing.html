@@ -1,0 +1,50 @@
+{% extends "ladmin/base.html" %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1 class="text-center">Manage Borrowings</h1>
+    <div class="row mt-4">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4>Borrowing List</h4>
+                    <a href="{% url 'admin_add_borrowing' %}" class="btn btn-primary">Add Borrowing</a>
+                </div>
+                <div class="card-body">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Customer</th>
+                                <th>Category</th>
+                                <th>Book</th>
+                                <th>Borrowed Date</th>
+                                <th>Due Date</th>
+                                <th>Returned Date</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for borrowing in borrowings %}
+                            <tr>
+                                <td>{{ borrowing.id }}</td>
+                                <td>{{ borrowing.user }}</td>
+                                <td>{{ borrowing.book.category }}</td>
+                                <td>{{ borrowing.book }}</td>
+                                <td>{{ borrowing.borrowed_date }}</td>
+                                <td>{{ borrowing.due_date }}</td>
+                                <td>{{ borrowing.returned_date }}</td>
+                                <td>
+                                    <a href="{% url 'admin_edit_borrowing' borrowing.id %}" class="btn btn-sm btn-primary">Edit</a>
+                                    <a href="#" class="btn btn-sm btn-danger">Delete</a>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

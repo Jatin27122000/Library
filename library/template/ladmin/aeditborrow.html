@@ -1,0 +1,43 @@
+{% extends "ladmin/base.html" %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1 class="text-center">Edit Borrowing</h1>
+    <div class="row mt-4">
+        <div class="col-md-6 offset-md-3">
+            <form method="POST">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label for="id_user" class="form-label">User</label>
+                    <input type="text" id="id_user" class="form-control" value="{{ form.instance.user }}" readonly>
+                    <input type="hidden" name="user" value="{{ form.instance.user.id }}">
+                </div>
+                <div class="mb-3">
+                    <label for="id_category" class="form-label">Category</label>
+                    <input type="text" id="id_category" class="form-control" value="{{ form.instance.category }}" readonly>
+                    <input type="hidden" name="category" value="{{ form.instance.category.id }}">
+                </div>
+                <div class="mb-3">
+                    <label for="id_book" class="form-label">Book</label>
+                    <input type="text" id="id_book" class="form-control" value="{{ form.instance.book }}" readonly>
+                    <input type="hidden" name="book" value="{{ form.instance.book.id }}">
+                </div>
+                <div class="mb-3">
+                    <label for="id_borrowed_date" class="form-label">Borrowed Date</label>
+                    <input type="text" id="id_borrowed_date" class="form-control" value="{{ form.instance.borrowed_date }}" readonly>
+                    <input type="hidden" name="borrowed_date" value="{{ form.instance.borrowed_date|date:"Y-m-d\TH:i" }}">
+                </div>
+                <div class="mb-3">
+                    <label for="id_due_date" class="form-label">Due Date</label>
+                    <input type="text" id="id_due_date" class="form-control" value="{{ form.instance.due_date }}" readonly>
+                    <input type="hidden" name="due_date" value="{{ form.instance.due_date|date:"Y-m-d\TH:i" }}">
+                </div>
+                <div class="mb-3">
+                    {{ form.returned_date.label_tag }} {{ form.returned_date }}
+                </div>
+                <button type="submit" class="btn btn-primary">Save Changes</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock content %}

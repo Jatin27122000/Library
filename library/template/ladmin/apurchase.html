@@ -1,0 +1,79 @@
+{% extends "ladmin/base.html" %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1 class="text-center">Manage Purchases</h1>
+    <div class="row mt-4">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4>Purchase List</h4>
+                    <a href="{% url 'admin_add_purchase' %}" class="btn btn-primary">Add Purchase</a>
+                </div>
+                <div class="card-body">
+                    <form method="GET" action="">
+                        <div class="input-group mb-3">
+                            <input type="text" name="search" class="form-control" placeholder="Search by Book ID" value="{{ search_query }}">
+                            <button class="btn btn-outline-secondary" type="submit">Search</button>
+                        </div>
+                    </form>
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Book ID</th>
+                                <th>Book Title</th>
+                                <th>Total Quantity Purchased</th>
+                                <th>Available Quantity </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for purchase in total_purchases  %}
+                            
+
+                            <tr>
+                                <td>{{ purchase.book__book_id }}</td>
+                                <td>{{ purchase.book__title }}</td>
+                                <td>{{ purchase.total_quantity }}</td>
+                                <td>{{ book.quantity }}</td>
+                            </tr>
+                            
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="card mt-4">
+                <div class="card-header">
+                    <h4>All Purchases</h4>
+                </div>
+                <div class="card-body">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Book</th>
+                                <th>Quantity</th>
+                                <th>Purchase Date</th>
+                                <th>Supplier Name</th>
+                                <th>Cost Per Unit</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for purchase in purchases %}
+                            <tr>
+                                <td>{{ purchase.id }}</td>
+                                <td>{{ purchase.book.title }}</td>
+                                <td>{{ purchase.quantity }}</td>
+                                <td>{{ purchase.purchase_date }}</td>
+                                <td>{{ purchase.supplier_name }}</td>
+                                <td>{{ purchase.cost_per_unit }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

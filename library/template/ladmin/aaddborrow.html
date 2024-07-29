@@ -1,0 +1,70 @@
+
+{% extends "ladmin/base.html" %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1 class="text-center">Add Borrowing</h1>
+    <div class="row mt-4">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4>Borrowing Form</h4>
+                </div>
+                <div class="card-body">
+                    <form method="POST" action="">
+                        {% csrf_token %}
+                        <div class="mb-3">
+                            <label for="id_user" class="form-label">User</label>
+                            <select name="user" id="id_user" class="form-select" onchange="this.form.submit()">
+                                <option value="">Select User</option>
+                                {% for user in form.fields.user.queryset %}
+                                    <option value="{{ user.id }}" {% if user.id|stringformat:"s" == form.data.user %}selected{% endif %}>{{ user.name }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        {% if form.data.user %}
+                            <div class="mb-3">
+                                <h5>User Details:</h5>
+                                <p><strong>Name:</strong> {{ user.customer.name }}</p>
+                                <p><strong>Email:</strong> {{ user.email }}</p>
+                            </div>
+                        {% endif %}
+                        <div class="mb-3">
+                            <label for="id_category" class="form-label">Category</label>
+                            <select name="category" id="id_category" class="form-select" onchange="this.form.submit()">
+                                <option value="">Select Category</option>
+                                {% for category in form.fields.category.queryset %}
+                                    <option value="{{ category.id }}" {% if category.id|stringformat:"s" == form.data.category %}selected{% endif %}>{{ category.name }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="id_book" class="form-label">Book</label>
+                            <select name="book" id="id_book" class="form-select">
+                                <option value="">Select Book</option>
+                                {% for book in form.fields.book.queryset %}
+                                    <option value="{{ book.id }}" {% if book.id|stringformat:"s" == form.data.book %}selected{% endif %}>{{ book.title }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="id_borrowed_date" class="form-label">Borrowed Date</label>
+                            <input type="datetime-local" name="borrowed_date" id="id_borrowed_date" class="form-control" value="{{ form.data.borrowed_date|default_if_none:'' }}">
+                        </div>
+                        <div class="mb-3">
+                            <label for="id_due_date" class="form-label">Due Date</label>
+                            <input type="datetime-local" name="due_date" id="id_due_date" class="form-control" value="{{ form.data.due_date|default_if_none:'' }}">
+                        </div>
+                        <div class="mb-3">
+                            <label for="id_returned_date" class="form-label">Returned Date</label>
+                            <input type="datetime-local" name="returned_date" id="id_returned_date" class="form-control" value="{{ form.data.returned_date|default_if_none:'' }}">
+                        </div>
+                        {{ form.non_field_errors }}
+                        <button type="submit" class="btn btn-primary">Add Borrowing</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

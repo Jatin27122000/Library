@@ -1,0 +1,30 @@
+{% extends "cust/base.html" %}
+
+{% block page %}
+<div class="container text-center">
+    <div class="row">
+
+
+      <div class="col">
+        <form method='post'>
+          {% csrf_token %}
+
+          <input type="text" class="form-control visually-hidden " id="name" name="id" value="{{ser.id}}" >
+            <div class="mb-3">
+              <label for="name" class="form-label">Name</label>
+              <input type="text" class="form-control" id="name" name='name' aria-describedby="emailHelp" value="{{ser.name}}">
+            </div>
+            <div class="mb-3">
+                <label for="mobile" class="form-label">Mobile</label>
+                <textarea class="form-control" id="mobile" rows="3" name='mobile'> {{ser.mobile}} </textarea>
+              </div>
+
+                       
+            
+            <button type="submit" class="btn btn-primary form-control">Submit</button>
+        </form>
+      </div>
+    </div>
+</div>
+    
+{% endblock page %}

@@ -1,0 +1,31 @@
+{% extends "ladmin/base.html" %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1 class="text-center">Add Book Purchase</h1>
+    <div class="row mt-4">
+        <div class="col-md-6 offset-md-3">
+            <form method="POST">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label for="id_book" class="form-label">Book</label>
+                    {{ form.book }}
+                </div>
+                <div class="mb-3">
+                    <label for="id_quantity" class="form-label">Quantity</label>
+                    {{ form.quantity }}
+                </div>
+                <div class="mb-3">
+                    <label for="id_supplier_name" class="form-label">Supplier Name</label>
+                    {{ form.supplier_name }}
+                </div>
+                <div class="mb-3">
+                    <label for="id_cost_per_unit" class="form-label">Cost Per Unit</label>
+                    {{ form.cost_per_unit }}
+                </div>
+                <button type="submit" class="btn btn-primary">Add Purchase</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock content %}
