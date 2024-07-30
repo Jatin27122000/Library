@@ -1,5 +1,6 @@
 from django import forms
 from ladmin.models import Category, Book, Borrowing, BookPurchase
+from cust.models import customer
 
 class CategoryForm(forms.ModelForm):
     class Meta:
@@ -10,6 +11,7 @@ class BookForm(forms.ModelForm):
     class Meta:
         model = Book
         fields = ['book_id', 'title', 'author', 'category']
+        
 
 class BookPurchaseForm(forms.ModelForm):
     class Meta:
@@ -36,7 +38,7 @@ class BorrowingForm(forms.ModelForm):
     borrowed_date = forms.DateTimeField(widget=forms.DateTimeInput(attrs={'type': 'datetime-local'}), required=True)
     due_date = forms.DateTimeField(widget=forms.DateTimeInput(attrs={'type': 'datetime-local'}), required=True)
     returned_date = forms.DateTimeField(widget=forms.DateTimeInput(attrs={'type': 'datetime-local'}), required=False)
-
+    user = forms.ModelChoiceField(queryset=customer.objects.filter(active=True), required=True)
     class Meta:
         model = Borrowing
         fields = ['user', 'category', 'book', 'borrowed_date', 'due_date', 'returned_date']
