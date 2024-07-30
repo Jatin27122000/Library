@@ -3,7 +3,7 @@ from django.contrib import messages
 from ladmin.models import Book, Category, Borrowing, BookPurchase
 from ladmin.forms import CategoryForm, BookForm, BorrowingForm, BookPurchaseForm
 from cust.models import customer
-from django.db.models import Sum
+from django.db.models import Sum,F
 
 def ahome(request):
     total_books = Book.objects.count()
@@ -162,21 +162,28 @@ def admin_edit_borrowing(request, borrowing_id):
 
 
 
+from django.shortcuts import render
+from django.db.models import Sum, F
+from .models import BookPurchase, Book
+
 def admin_purchases(request):
     search_query = request.GET.get('search', '')
+
     if search_query:
         purchases = BookPurchase.objects.filter(book__book_id__icontains=search_query)
     else:
         purchases = BookPurchase.objects.all()
     
-    # Calculate the total quantity purchased for each book
-    total_purchases = BookPurchase.objects.values('book__title', 'book__book_id').annotate(total_quantity=Sum('quantity')).order_by('book__title')
-    books= Book.objects.all()
+    # Calculate the total quantity purchased and available quantity for each book
+    total_purchases = BookPurchase.objects.values('book__book_id', 'book__title').annotate(
+        total_quantity=Sum('quantity'),
+        available_quantity=F('book__quantity')
+    ).order_by('book__title')
+
     context = {
         'purchases': purchases,
         'total_purchases': total_purchases,
         'search_query': search_query,
-        'books':books,
     }
     
     return render(request, 'ladmin/apurchase.html', context)
