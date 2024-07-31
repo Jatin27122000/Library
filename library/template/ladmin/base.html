@@ -16,7 +16,7 @@
         }
         .sidebar {
             height: 100vh;
-            background-color: #3cb68f;
+            background-color: #3cb64c;
             padding: 15px;
             position: fixed;
             top: 0;
@@ -64,19 +64,28 @@
     <div class="sidebar">
         <h2>Admin Panel</h2>
         <a href="{% url 'ahome' %}">Dashboard</a>
-        <div class="dropdown">
-            <a href="#" class="dropdown-toggle" id="manageBooksDropdown" data-bs-toggle="dropdown" aria-expanded="false">Manage Books</a>
-            <ul class="dropdown-menu" aria-labelledby="manageBooksDropdown">
-                <li><a class="dropdown-item" href="{% url 'admin_books' %}">List Books</a></li>
-                <li><a class="dropdown-item" href="{% url 'admin_add_book' %}">Add Book</a></li>
-                <li><a class="dropdown-item" href="{% url 'admin_purchases' %}">Add Purchase</a></li> <!-- Added link to Add Purchase -->
-            </ul>
-        </div>
+        <a href="{% url 'admin_borrowings' %}">Manage Borrowings</a>
         <div class="dropdown">
             <a href="#" class="dropdown-toggle" id="manageCategoriesDropdown" data-bs-toggle="dropdown" aria-expanded="false">Manage Categories</a>
             <ul class="dropdown-menu" aria-labelledby="manageCategoriesDropdown">
                 <li><a class="dropdown-item" href="{% url 'admin_categories' %}">List Categories</a></li>
                 <li><a class="dropdown-item" href="{% url 'admin_add_category' %}">Add Category</a></li>
+            </ul>
+        </div>
+        <div class="dropdown">
+            <a href="#" class="dropdown-toggle" id="manageBooksDropdown" data-bs-toggle="dropdown" aria-expanded="false">Manage Books</a>
+            <ul class="dropdown-menu" aria-labelledby="manageBooksDropdown">
+                <li><a class="dropdown-item" href="{% url 'admin_books' %}">List Books</a></li>
+                <li><a class="dropdown-item" href="{% url 'admin_add_book' %}">Add Book</a></li>
+               
+            </ul>
+        </div>
+        <div class="dropdown">
+            <a href="#" class="dropdown-toggle" id="managePurchaseDropdown" data-bs-toggle="dropdown" aria-expanded="false">Manage Purchases</a>
+            <ul class="dropdown-menu" aria-labelledby="manageBooksDropdown">
+                
+                <li><a class="dropdown-item" href="{% url 'admin_add_purchase' %}">Add Purchases</a></li>
+                <li><a class="dropdown-item" href="{% url 'admin_purchases' %}">List Purchase</a></li> <!-- Added link to Add Purchase -->
             </ul>
         </div>
         <div class="dropdown">
@@ -93,9 +102,8 @@
                 <li><a class="dropdown-item" href="#">Add User</a></li>
             </ul>
         </div>
-        <a href="{% url 'admin_borrowings' %}">Manage Borrowings</a>
-        <a href="#">Settings</a>
-        <a href="#">Logout</a>
+        
+        
     </div>
 
     <!-- Main Content -->
