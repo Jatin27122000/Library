@@ -5,26 +5,30 @@
     <h1 class="text-center">Add Book</h1>
     <div class="row mt-4">
         <div class="col-md-6 offset-md-3">
-            <form method="POST">
-                {% csrf_token %}
-                <div class="mb-3">
-                    <label for="id_book_id" class="form-label">Book ID</label>
-                    {{ form.book_id }}
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <form method="POST">
+                        {% csrf_token %}
+                        <div class="mb-3">
+                            <label for="id_book_id" class="form-label">Book ID</label>
+                            {{ form.book_id }}
+                        </div>
+                        <div class="mb-3">
+                            <label for="id_title" class="form-label">Title</label>
+                            {{ form.title }}
+                        </div>
+                        <div class="mb-3">
+                            <label for="id_author" class="form-label">Author</label>
+                            {{ form.author }}
+                        </div>
+                        <div class="mb-3">
+                            <label for="id_category" class="form-label">Category</label>
+                            {{ form.category }}
+                        </div>
+                        <button type="submit" class="btn btn-primary">Add Book</button>
+                    </form>
                 </div>
-                <div class="mb-3">
-                    <label for="id_title" class="form-label">Title</label>
-                    {{ form.title }}
-                </div>
-                <div class="mb-3">
-                    <label for="id_author" class="form-label">Author</label>
-                    {{ form.author }}
-                </div>
-                <div class="mb-3">
-                    <label for="id_category" class="form-label">Category</label>
-                    {{ form.category }}
-                </div>
-                <button type="submit" class="btn btn-primary">Add Book</button>
-            </form>
+            </div>
         </div>
     </div>
 </div>

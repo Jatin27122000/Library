@@ -25,6 +25,7 @@
                 <th>ID</th>
                 <th>Book</th>
                 <th>Borrow Date</th>
+                <th>Due Date</th>
                 <th>Return Date</th>
             </tr>
         </thead>
@@ -34,6 +35,7 @@
                 <td>{{ borrowing.id }}</td>
                 <td>{{ borrowing.book.title }}</td>
                 <td>{{ borrowing.borrowed_date }}</td>
+                <td>{{ borrowing.due_date }}</td>
                 <td>{{ borrowing.returned_date }}</td>
             </tr>
             {% endfor %}

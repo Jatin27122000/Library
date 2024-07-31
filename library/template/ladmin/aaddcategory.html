@@ -5,11 +5,15 @@
     <h1 class="text-center">Add Category</h1>
     <div class="row mt-4">
         <div class="col-md-6 offset-md-3">
-            <form method="POST">
-                {% csrf_token %}
-                {{ form.as_p }}
-                <button type="submit" class="btn btn-primary">Add Category</button>
-            </form>
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <form method="POST">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                        <button type="submit" class="btn btn-primary">Add Category</button>
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
 </div>
