@@ -10,6 +10,7 @@ class customer(models.Model):
     address = models.CharField(max_length=50, null=True)
     gender = models.CharField(max_length=50, null=True)
     created_at = models.DateTimeField(auto_now=False, auto_now_add=False, null=True)
+    picture=models.ImageField(null=True)
     active = models.BooleanField(default=True) 
 
     def __str__(self):

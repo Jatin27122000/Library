@@ -1,5 +1,43 @@
 {% extends 'cust/base.html' %}
 
 {% block page %}
-
+<div class="container mt-5 text-center">
+    <h1 class="display-4">Welcome to the Library Management System</h1>
+    <p class="lead">Your one-stop solution for managing books, borrowings, and more.</p>
+    <hr class="my-4">
+    <p>Use the navigation menu to access different sections of the system.</p>
+    <a class="btn btn-primary btn-lg" href="{% url 'profilepage' %}" role="button">View Profile</a>
+</div>
+<style>
+    body {
+        background: linear-gradient(to right, #6a11cb, #2575fc);
+        color: white;
+    }
+    h1 {
+        animation: fadeInDown 1s ease-in-out;
+    }
+    .lead {
+        animation: fadeInUp 1.5s ease-in-out;
+    }
+    @keyframes fadeInDown {
+        from {
+            opacity: 0;
+            transform: translateY(-20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+</style>
 {% endblock page %}

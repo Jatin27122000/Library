@@ -1,62 +1,50 @@
 {% extends "cust/base.html" %}
 
 {% block page %}
-
-<h1 class="text-center mt-5">Login</h1>
-
-{% if messages %} 
-  {% for message in messages %} 
-  <div class="alert alert-warning alert-dismissible fade show" role="alert">
-    <strong>{{ message }}</strong> 
-    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-  </div>
-  {% endfor %}
-{% endif %}
-
-<style>
-  body {
-    background-image: url('');
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-    font-family: 'Roboto', sans-serif;
-  }
-  .login-form {
-    background: rgba(255, 255, 255, 0.8);
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    animation: fadeIn 1s ease-in-out;
-  }
-  .login-form input {
-    margin-bottom: 15px;
-  }
-  .btn-primary {
-    background: linear-gradient(45deg, #007bff, #00d4ff);
-    border: none;
-  }
-  .btn-primary:hover {
-    background: linear-gradient(45deg, #00d4ff, #007bff);
-  }
-  @keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-  }
-</style>
-
 <div class="container d-flex justify-content-center align-items-center" style="min-height: 80vh;">
-  <form class="login-form" method="POST" action="{% url 'login' %}">
-    {% csrf_token %}
-    <div class="mb-3">
-      <label for="username" class="form-label">User Name</label>
-      <input type="text" class="form-control" id="username" name="username" aria-describedby="usernameHelp" required>
-    </div>
-    <div class="mb-3">
-      <label for="password" class="form-label">Password</label>
-      <input type="password" class="form-control" name="password" id="password" required>
-    </div>
-    <button type="submit" class="btn btn-primary w-100">Login</button>
-  </form>
+    <form class="login-form p-5" method="POST" action="{% url 'login' %}">
+        {% csrf_token %}
+        <h1 class="text-center mb-4">Login</h1>
+        {% if messages %}
+          {% for message in messages %}
+          <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            <strong>{{ message }}</strong> 
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+          {% endfor %}
+        {% endif %}
+        <div class="mb-3">
+            <label for="username" class="form-label">User Name</label>
+            <input type="text" class="form-control" id="username" name="username" required>
+        </div>
+        <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input type="password" class="form-control" id="password" name="password" required>
+        </div>
+        <button type="submit" class="btn btn-primary w-100">Login</button>
+    </form>
 </div>
-
+<style>
+    body {
+        background: linear-gradient(to right, #00c6ff, #0072ff);
+        color: white;
+    }
+    .login-form {
+        background: rgba(18, 17, 17, 0.9);
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        animation: fadeIn 1s ease-in-out;
+    }
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: scale(0.95);
+        }
+        to {
+            opacity: 1;
+            transform: scale(1);
+        }
+    }
+</style>
 {% endblock page %}
