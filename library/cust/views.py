@@ -81,8 +81,9 @@ def register(request):
 
 @login_required
 def user_borrowings(request):
-    user=request.user
-    borrowings = Borrowing.objects.filter(user=request.user)
+    user = request.user.customer
+    
+    borrowings = Borrowing.objects.filter(user=user)
     return render(request, 'cust/borrow.html', {'borrowings': borrowings})
 
 

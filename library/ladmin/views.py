@@ -162,9 +162,6 @@ def admin_edit_borrowing(request, borrowing_id):
 
 
 
-from django.shortcuts import render
-from django.db.models import Sum, F
-from .models import BookPurchase, Book
 
 def admin_purchases(request):
     search_query = request.GET.get('search', '')

@@ -48,6 +48,7 @@
                         <thead>
                             <tr>
                                 <th>ID</th>
+                                <th>Book ID</th>
                                 <th>Book</th>
                                 <th>Quantity</th>
                                 <th>Purchase Date</th>
@@ -59,6 +60,7 @@
                             {% for purchase in purchases %}
                             <tr>
                                 <td>{{ purchase.id }}</td>
+                                <td>{{ purchase.book.book_id }}</td>
                                 <td>{{ purchase.book.title }}</td>
                                 <td>{{ purchase.quantity }}</td>
                                 <td>{{ purchase.purchase_date }}</td>
