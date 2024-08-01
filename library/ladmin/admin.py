@@ -14,7 +14,7 @@ class bookAdmin(admin.ModelAdmin):
     
 @admin.register(Borrowing)
 class borrowingAdmin(admin.ModelAdmin):
-    list_display= ['user','category','book']
+    list_display= ['user','category','book','borrowed_date','due_date','returned_date']
     
 @admin.register(BookPurchase)
 class bookpurchaseAdmin(admin.ModelAdmin):
